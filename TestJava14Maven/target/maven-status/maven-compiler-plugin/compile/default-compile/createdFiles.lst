@@ -1,0 +1,7 @@
+Main.class
+Service\SummaryService.class
+Data\PersonalData.class
+Data\PersonPropertyKeys.class
+Data\PersonRepositoryFromPropertyFileImpl.class
+Data\PersonRepository.class
+Service\SummaryServiceImpl.class
