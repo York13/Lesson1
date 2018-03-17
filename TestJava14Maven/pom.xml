@@ -8,6 +8,16 @@
     <artifactId>TestJava14Maven</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <packaging>jar</packaging>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.plugin.version>3.5.1</maven.compiler.plugin.version>
+        <maven.war.plugin.version>3.0.0</maven.war.plugin.version>
+        <maven.resources.plugin.version>3.0.0</maven.resources.plugin.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>log4j</groupId>
@@ -17,17 +27,35 @@
     </dependencies>
 
     <build>
+        <outputDirectory>target/classes</outputDirectory>
+        <finalName>TestJava14Maven</finalName>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <resources>
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+                <includes>
+                    <include>*.properties</include>
+                </includes>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.plugin.version}</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <compilerArgument>-Xlint:all</compilerArgument>
                 </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${maven.resources.plugin.version}</version>
             </plugin>
         </plugins>
     </build>
+
 
 
 </project>
