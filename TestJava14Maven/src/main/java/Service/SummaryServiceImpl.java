@@ -43,46 +43,46 @@ public class SummaryServiceImpl implements SummaryService {
                     "        <div class=\"row\">\n" +
                     "            <div class=\"col-xs-8 col-md-8\">\n" +
                     "                <dl class=\"dl-horizontal\">\n" +
-                    "                    <dt>ФИО:</dt><dd>" + personalData.getFIO() + "</dd>\n" +
-                    "                    <dt>Дата рождения:</dt><dd>" + personalData.getDOB() + "</dd>\n" +
-                    "                    <dt>Телефон:</dt><dd>" + personalData.getPhone() + "</dd>\n" +
-                    "                    <dt>e-mail:</dt><dd>" + personalData.getEmail() + "</dd>\n" +
-                    "                    <dt>Skype:</dt><dd>" + personalData.getSkype() + "</dd>\n" +
+                    "                    <dt>ФИО:</dt><dd>" + personalData.returnKey("FIO") + "</dd>\n" +
+                    "                    <dt>Дата рождения:</dt><dd>" + personalData.returnKey("DOB") + "</dd>\n" +
+                    "                    <dt>Телефон:</dt><dd>" + personalData.returnKey("phone") + "</dd>\n" +
+                    "                    <dt>e-mail:</dt><dd>" + personalData.returnKey("email") + "</dd>\n" +
+                    "                    <dt>Skype:</dt><dd>" + personalData.returnKey("skype") + "</dd>\n" +
                     "                </dl></div>\n" +
                     "            <div class=\"col-xs-4 col-md-4\">\n" +
-                    "                <img src=\"" + personalData.getAvatar() + "\" width=\"100%\">\n" +
+                    "                <img src=\"" + personalData.returnKey("avatar") + "\" width=\"100%\">\n" +
                     "            </div>\n" +
                     "        </div>\n" +
                     "        <div class=\"card card-block\">\n" +
                     "            <h4 class=\"card-title\"><strong>Цель:</strong></h4>\n" +
-                    "            <p class=\"card-text\">" + personalData.getTarget() + "</p>\n" +
+                    "            <p class=\"card-text\">" + personalData.returnKey("target") + "</p>\n" +
                     "        </div>\n" +
                     "        <div class=\"card card-block\">\n" +
                     "            <h4 class=\"card-title\"><strong>Опыт работы:</strong></h4>\n" +
                     "            <ol class=\"card-text\">\n"
-                                    + personalData.getExperiences() +
+                                    + personalData.returnKey("experiences") +
                     "            </ol>\n" +
                     "        </div>\n" +
                     "        <div class=\"card card-block\">\n" +
                     "            <h4 class=\"card-title\"><strong>Образование:</strong></h4>\n" +
-                    "            <p class=\"card-text\">" + personalData.getEducations() + "</p>\n" +
+                    "            <p class=\"card-text\">" + personalData.returnKey("educations") + "</p>\n" +
                     "        </div>\n" +
                     "        <div class=\"card card-block\">\n" +
                     "            <h4 class=\"card-title\"><strong>Доп. образ. и курсы:</strong></h4>\n" +
                     "            <ol class=\"card-text\">\n"
-                                    + personalData.getAdditionalEducations() +
+                                    + personalData.returnKey("additional_educations") +
                     "            </ol>\n" +
                     "        </div>\n" +
                     "        <div class=\"card card-block\">\n" +
                     "            <h4 class=\"card-title\"><strong>Навыки:</strong></h4>\n" +
                     "            <ol class=\"card-text\">\n"
-                                    + personalData.getSkills() +
+                                    + personalData.returnKey("skills") +
                     "            </ol>\n" +
                     "        </div>\n" +
                     "        <div class=\"card card-block\">\n" +
                     "            <h4 class=\"card-title\"><strong>Примеры моего кода:</strong></h4>\n" +
                     "            <div class=\"card-text\">\n"
-                                    + personalData.getExamplesCode() +
+                                    + personalData.returnKey("examples_code") +
                     "            </div>\n" +
                     "        </div>\n" +
                     "    </div>\n" +
