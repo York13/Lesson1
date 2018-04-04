@@ -1,6 +1,8 @@
 package Data;
 
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class PersonalData {
 
@@ -20,11 +22,18 @@ public class PersonalData {
             peronalData.put(PersonPropertyKeys.ADDITIONAL_EDUCATIONS, additionalEducations);
             peronalData.put(PersonPropertyKeys.SKILLS, skills);
             peronalData.put(PersonPropertyKeys.EXAMPLES_CODE, examplesCode);
-
     }
 
     public String returnKey(String key) {
         return peronalData.get(key);
+    }
+
+    public void info() {
+        Set<Map.Entry<String, String>> set = peronalData.entrySet();
+        for (Map.Entry<String, String> me : set) {
+            System.out.print(me.getKey() + ": ");
+            System.out.println(me.getValue());
+        }
     }
 
 }

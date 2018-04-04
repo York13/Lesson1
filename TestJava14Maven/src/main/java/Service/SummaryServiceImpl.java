@@ -12,9 +12,10 @@ public class SummaryServiceImpl implements SummaryService {
 
     private PersonalData personalData;
 
-    public SummaryServiceImpl(String propertyFilePath){
+    public SummaryServiceImpl(String propertyFilePathOne, String propertyFilePathTwo){
         PersonRepository personRepository = new PersonRepositoryFromPropertyFileImpl(
-                getClass().getClassLoader().getResourceAsStream(propertyFilePath)
+                getClass().getClassLoader().getResourceAsStream(propertyFilePathOne),
+                getClass().getClassLoader().getResourceAsStream(propertyFilePathTwo)
         );
         this.personalData = personRepository.getPersonalData();
     }
@@ -89,6 +90,7 @@ public class SummaryServiceImpl implements SummaryService {
                     "</body>\n" +
                     "</html>";
             try {
+                personalData.info();
                 File file = new File(pathHtmlFile);
                 if(!file.exists()){
                     file.createNewFile();

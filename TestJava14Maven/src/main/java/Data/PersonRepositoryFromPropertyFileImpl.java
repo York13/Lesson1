@@ -1,32 +1,25 @@
 package Data;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.Charset;
 import java.util.Properties;
 
 public class PersonRepositoryFromPropertyFileImpl implements PersonRepository {
 
     private Properties personDataFile;
 
-    public PersonRepositoryFromPropertyFileImpl(InputStream configFileInput){
-        this.personDataFile = getProperties(configFileInput);
-    }
+    public PersonRepositoryFromPropertyFileImpl(InputStream configFileInputOne, InputStream configFileInputTwo){
+        PropertyReader readerOnePropertyFile = new PropertyReader(configFileInputOne);
+        PropertyReader readerTwoPropertyFile = new PropertyReader(configFileInputTwo);
 
-    private Properties getProperties(InputStream configFileInput) {
-        Properties property = new Properties();
         try {
-            property.load(new InputStreamReader(configFileInput, Charset.forName("UTF-8")));
-            return property;
-        } catch (FileNotFoundException e) {
-            System.out.println("Не найден файл настроек");
-            e.printStackTrace();
-        } catch (IOException e) {
+            readerOnePropertyFile.t.join();
+            readerTwoPropertyFile.t.join();
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return null;
+
+        this.personDataFile = readerOnePropertyFile.getPersonalDataOfProperties();
+        this.personDataFile.putAll(readerTwoPropertyFile.getPersonalDataOfProperties());
     }
 
     @Override
