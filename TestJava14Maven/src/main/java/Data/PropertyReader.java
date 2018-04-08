@@ -1,36 +1,27 @@
 package Data;
 
+import org.springframework.stereotype.Component;
+
 import java.io.*;
 import java.nio.charset.Charset;
 import java.util.Properties;
 
-public class PropertyReader extends Thread {
-    private InputStream propertyPath;
-    private Properties properties;
-    public Thread t;
+@Component
+public class PropertyReader implements MyReader {
 
-    PropertyReader(InputStream propertyPath) {
-        this.propertyPath = propertyPath;
-        t = new Thread(this);
-        t.start();
-    }
+    protected Properties personDataFile;
 
-    @Override
-    public void run() {
+    public void getFromProperty(String propertyFilePathOne, String propertyFilePathTwo) {
         try {
-            this.properties = getPropertiesFromFile(propertyPath);
+            personDataFile.load(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(propertyFilePathOne), Charset.forName("UTF-8")));
+            personDataFile.load(new InputStreamReader(getClass().getClassLoader().getResourceAsStream(propertyFilePathTwo), Charset.forName("UTF-8")));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private Properties getPropertiesFromFile(InputStream propertyPath) throws IOException {
-        Properties properties = new Properties();
-        properties.load(new InputStreamReader(propertyPath, Charset.forName("UTF-8")));
-        return properties;
-    }
-
-    Properties getPersonalDataOfProperties() {
-        return this.properties;
+    public Properties getPersonDataFile(String propertyFilePathOne, String propertyFilePathTwo) {
+        getFromProperty(propertyFilePathOne, propertyFilePathTwo);
+        return personDataFile;
     }
 }
