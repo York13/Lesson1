@@ -1,6 +1,7 @@
-package Data;
+package main.data;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -8,8 +9,12 @@ import java.util.HashMap;
 @Component
 public class PersonRepositoryFromPropertyFileImpl implements PersonalRepository {
 
+    private PropertyReader propertyReader;
+
     @Autowired
-    MyReader propertyReader;
+    public PersonRepositoryFromPropertyFileImpl(@Qualifier("propertyReader") PropertyReader propertyReader) {
+        this.propertyReader = propertyReader;
+    }
 
     protected HashMap<String, String> peronalData = new HashMap<>();
 

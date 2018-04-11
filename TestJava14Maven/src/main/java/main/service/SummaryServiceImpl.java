@@ -1,7 +1,9 @@
-package Service;
+package main.service;
 
-import Data.PersonalRepository;
+import main.data.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
@@ -11,8 +13,13 @@ import java.io.IOException;
 @Component
 public class SummaryServiceImpl implements SummaryService {
 
-    @Autowired
     PersonalRepository personRepositoryFromPropertyFile;
+
+    @Autowired
+    public SummaryServiceImpl(@Qualifier("personRepositoryFromPropertyFileImpl") PersonRepositoryFromPropertyFileImpl personRepositoryFromPropertyFileImpl) {
+        this.personRepositoryFromPropertyFile = personRepositoryFromPropertyFileImpl;
+    }
+
 
     @Override
     public void createHtmlFile(String propertyFilePathOne, String propertyFilePathTwo, String pathHtmlFile) {

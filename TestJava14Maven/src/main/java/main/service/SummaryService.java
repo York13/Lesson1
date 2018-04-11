@@ -1,4 +1,4 @@
-package Service;
+package main.service;
 
 public interface SummaryService {
 

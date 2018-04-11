@@ -1,4 +1,4 @@
-package Data;
+package main.data;
 
 public interface PersonPropertyKeys {
     String FIO = "FIO";

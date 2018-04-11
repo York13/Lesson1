@@ -1,4 +1,4 @@
-package Data;
+package main.data;
 
 public interface PersonalRepository {
     void fillHashMap(String pathOne, String pathTwo);
